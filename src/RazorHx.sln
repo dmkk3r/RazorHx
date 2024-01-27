@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components", "RazorHx.Components\RazorHx.Components.csproj", "{AC294D9B-6C84-4FFE-A5FC-6391792F0814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components.Htmx", "RazorHx.Components.Htmx\RazorHx.Components.Htmx.csproj", "{B36FF907-A323-47CB-8831-50B8ECBD654E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC294D9B-6C84-4FFE-A5FC-6391792F0814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC294D9B-6C84-4FFE-A5FC-6391792F0814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC294D9B-6C84-4FFE-A5FC-6391792F0814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC294D9B-6C84-4FFE-A5FC-6391792F0814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36FF907-A323-47CB-8831-50B8ECBD654E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36FF907-A323-47CB-8831-50B8ECBD654E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36FF907-A323-47CB-8831-50B8ECBD654E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36FF907-A323-47CB-8831-50B8ECBD654E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
