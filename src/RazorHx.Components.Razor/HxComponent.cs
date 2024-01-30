@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace RazorHx.Components.Components;
+namespace RazorHx.Components.Razor;
 
 public class HxComponent : IComponent {
     private readonly RenderFragment _renderFragment;
@@ -154,7 +154,7 @@ public class HxComponent : IComponent {
     }
 
     private async Task RunInitAndSetParametersAsync() {
-        await OnInitializedAsync();
+        OnInitialized();
         var task = OnInitializedAsync();
 
         if (task.Status != TaskStatus.RanToCompletion && task.Status != TaskStatus.Canceled)

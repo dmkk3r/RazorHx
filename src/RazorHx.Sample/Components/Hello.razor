@@ -1,0 +1,17 @@
+﻿@inherits RazorHx.Components.Razor.HxComponent
+@inject ILogger<Hello> Logger
+
+<h1>RazorHx Sandbox</h1>
+
+<a href="/withboost">Hello (with hx-boost)</a><br/><br/>
+<a href="/withoutboost" hx-boost="false">Hello (without hx-boost)</a><br/><br/>
+<button hx-get="/get" hx-target="#get-target">Get with hx-get</button>
+<div id="get-target"></div>
+
+@code {
+
+    protected override void OnParametersSet() {
+        Logger.LogInformation("HelloWorld");
+    }
+
+}

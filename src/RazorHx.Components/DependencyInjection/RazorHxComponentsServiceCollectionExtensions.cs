@@ -10,6 +10,10 @@ public static class RazorHxComponentsServiceCollectionExtensions {
 
         var options = new RazorHxComponentsServiceOptions();
         configure?.Invoke(options);
+        
+        services.AddSingleton(options);
+
+        services.AddSingleton<RazorHxComponentsMarkerService>();
 
         services.AddLogging();
         services.AddSingleton<HtmlRenderer>();
