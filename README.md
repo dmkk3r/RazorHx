@@ -29,11 +29,15 @@ Here's a quick example of how to use the library:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRazorHxComponents();
+builder.Services.AddRazorHxComponents(options => {
+    options.RootComponent = typeof(Index);
+});
 
 var app = builder.Build();
 
-app.MapGet("/", () => new RazorHxComponentResult<HelloWorld>(new { Name = "World" }));
+app.UseRazorHxComponents();
+
+app.MapGet("/", () => new RazorHxComponentResult<Hello>());
 
 app.Run();
 ```
