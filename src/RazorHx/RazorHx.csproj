@@ -4,22 +4,29 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Version>0.0.2</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>RazorHx</Title>
+        <Authors>dmkk3r</Authors>
+        <Description>Combine the power of HTMX with Razor Components and Minimal APIs</Description>
+        <PackageProjectUrl>https://github.com/dmkk3r/RazorHx</PackageProjectUrl>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/dmkk3r/RazorHx/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/dmkk3r/RazorHx</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RazorHx.Htmx\RazorHx.Htmx.csproj" />
       <ProjectReference Include="..\RazorHx.Components\RazorHx.Components.csproj" />
+      <ProjectReference Include="..\RazorHx.Htmx\RazorHx.Htmx.csproj" />
     </ItemGroup>
-    
+
 </Project>

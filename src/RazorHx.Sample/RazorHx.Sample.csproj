@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RazorHx\RazorHx.csproj" />
+      <PackageReference Include="RazorHx" Version="0.0.2" />
     </ItemGroup>
 
 </Project>
