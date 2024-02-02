@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace RazorHx.Components.Razor;
+namespace RazorHx.Components;
 
 public class HxComponent : IComponent {
     private readonly RenderFragment _renderFragment;

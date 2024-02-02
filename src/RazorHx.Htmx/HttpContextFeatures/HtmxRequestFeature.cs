@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace RazorHx.Components.Htmx.HttpContextFeatures;
+namespace RazorHx.Htmx.HttpContextFeatures;
 
 public class HtmxRequestFeature : IHtmxRequestFeature {
     public HtmxRequest CurrentRequest { get; set; }

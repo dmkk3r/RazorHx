@@ -2,16 +2,16 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using RazorHx.Components.DependencyInjection;
-using RazorHx.Components.Htmx.HttpContextFeatures;
-using RazorHx.Components.Razor;
+using RazorHx.Components;
+using RazorHx.Htmx.HttpContextFeatures;
+using RazorHx.DependencyInjection;
 
-namespace RazorHx.Components.Results;
+namespace RazorHx.Results;
 
-internal static class RazorHxComponentResultExecutor {
+internal static class RazorHxResultExecutor {
     private const string DefaultContentType = "text/html; charset=utf-8";
 
-    public static Task ExecuteAsync(HttpContext httpContext, RazorHxComponentResult result) {
+    public static Task ExecuteAsync(HttpContext httpContext, RazorHxResult result) {
         ArgumentNullException.ThrowIfNull(httpContext);
 
         var response = httpContext.Response;
@@ -30,7 +30,7 @@ internal static class RazorHxComponentResultExecutor {
 
     private static async Task<Task> RenderComponentToResponse(HttpContext httpContext, Type componentType, ParameterView componentParameters) {
         var htmlRenderer = httpContext.RequestServices.GetRequiredService<HtmlRenderer>();
-        var razorHxComponentsServiceOptions = httpContext.RequestServices.GetRequiredService<RazorHxComponentsServiceOptions>();
+        var razorHxComponentsServiceOptions = httpContext.RequestServices.GetRequiredService<RazorHxServiceOptions>();
 
         var htmxRequestFeature = httpContext.Features.Get<IHtmxRequestFeature>();
 

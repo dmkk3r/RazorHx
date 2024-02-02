@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace RazorHx.Components.Htmx;
+namespace RazorHx.Htmx;
 
 public class HtmxRequest(HttpRequest request) {
     private HttpRequest HttpRequest { get; } = request;

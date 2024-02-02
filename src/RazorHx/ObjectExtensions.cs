@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace RazorHx.Components;
+namespace RazorHx;
 
 public static class ObjectExtensions {
     public static Dictionary<string, object?> ToDictionary(this object? values) {

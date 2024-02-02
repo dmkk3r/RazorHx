@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 
-namespace RazorHx.Components.Results;
+namespace RazorHx.Results;
 
-public class RazorHxComponentResult : IResult, IStatusCodeHttpResult, IContentTypeHttpResult {
+public class RazorHxResult : IResult, IStatusCodeHttpResult, IContentTypeHttpResult {
     private static readonly ParameterView EmptyParameters = ParameterView.Empty;
 
-    public RazorHxComponentResult(Type componentType) : this(componentType, EmptyParameters) { }
+    public RazorHxResult(Type componentType) : this(componentType, EmptyParameters) { }
 
-    public RazorHxComponentResult(Type componentType, object parameters)
+    public RazorHxResult(Type componentType, object parameters)
         : this(componentType, CoerceParametersObjectToDictionary(parameters)) { }
 
-    private RazorHxComponentResult(Type componentType, ParameterView parameters) {
+    private RazorHxResult(Type componentType, ParameterView parameters) {
         ArgumentNullException.ThrowIfNull(componentType);
 
         ComponentType = componentType;
@@ -32,5 +32,5 @@ public class RazorHxComponentResult : IResult, IStatusCodeHttpResult, IContentTy
     public ParameterView Parameters { get; }
 
     public Task ExecuteAsync(HttpContext httpContext)
-        => RazorHxComponentResultExecutor.ExecuteAsync(httpContext, this);
+        => RazorHxResultExecutor.ExecuteAsync(httpContext, this);
 }

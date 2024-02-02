@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components", "RazorHx.Components\RazorHx.Components.csproj", "{AC294D9B-6C84-4FFE-A5FC-6391792F0814}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx", "RazorHx\RazorHx.csproj", "{AC294D9B-6C84-4FFE-A5FC-6391792F0814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components.Htmx", "RazorHx.Components.Htmx\RazorHx.Components.Htmx.csproj", "{B36FF907-A323-47CB-8831-50B8ECBD654E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Htmx", "RazorHx.Htmx\RazorHx.Htmx.csproj", "{B36FF907-A323-47CB-8831-50B8ECBD654E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Sample", "RazorHx.Sample\RazorHx.Sample.csproj", "{938696F9-028D-494B-8651-E2DB0C1AD61C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components.Razor", "RazorHx.Components.Razor\RazorHx.Components.Razor.csproj", "{7C8C5B74-FE47-47E7-A4EC-8D6AE9CCC5EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHx.Components", "RazorHx.Components\RazorHx.Components.csproj", "{7C8C5B74-FE47-47E7-A4EC-8D6AE9CCC5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

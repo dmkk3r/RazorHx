@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using RazorHx.Components.Htmx.HttpContextFeatures;
+using RazorHx.Htmx.HttpContextFeatures;
 
-namespace RazorHx.Components.Htmx.Middlewares;
+namespace RazorHx.Htmx.Middlewares;
 
 public class HtmxRequestMiddleware {
     private readonly RequestDelegate _next;

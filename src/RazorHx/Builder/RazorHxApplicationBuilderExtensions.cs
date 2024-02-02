@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using RazorHx.Components.Htmx.Middlewares;
+using RazorHx.Htmx.Middlewares;
 
-namespace RazorHx.Components.Builder;
+namespace RazorHx.Builder;
 
-public static class RazorHxComponentsApplicationBuilderExtensions {
+public static class RazorHxApplicationBuilderExtensions {
     public static void UseRazorHxComponents(this IApplicationBuilder application) {
         ArgumentNullException.ThrowIfNull(application);
 

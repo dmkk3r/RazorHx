@@ -1,4 +1,4 @@
-﻿namespace RazorHx.Components.Htmx;
+﻿namespace RazorHx.Htmx;
 
 public static class HtmxResponseHeaderKeys {
     /// <summary>

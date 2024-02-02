@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace RazorHx.Components.DependencyInjection;
+namespace RazorHx.DependencyInjection;
 
-public interface IRazorHxComponentsBuilder {
+public interface IRazorHxBuilder {
     public IServiceCollection Services { get; }
 }
