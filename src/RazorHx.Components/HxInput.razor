@@ -1,0 +1,35 @@
+﻿@typeparam TModel
+@using System.Linq.Expressions
+@using System.Reflection
+@typeparam TProperty
+
+<input hx-post="/post"
+       hx-select="#@PropertyId"
+       hx-target="#@PropertyId"
+       hx-swap="outerHTML"
+       hx-trigger="change"
+       hx-indicator="#@PropertyId-indicator"
+       id="@PropertyId"
+       name="@PropertyName"
+       value="@PropertyValue"
+       @attributes="@AdditionalProperties"/>
+
+@code {
+    [Parameter][EditorRequired] public required TModel Model { get; set; }
+    [Parameter][EditorRequired] public required Expression<Func<TModel, TProperty>> Property { get; set; }
+    [Parameter] public string? Id { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalProperties { get; set; }
+
+    private MemberInfo MemberInfo => Property.Body switch
+    {
+        MemberExpression memberExpression => memberExpression.Member,
+        UnaryExpression { Operand: MemberExpression memberExpression } => memberExpression.Member,
+        _ => throw new ArgumentException("Invalid expression")
+    };
+
+    private string PropertyId => Id ?? MemberInfo.ReflectedType?.Name.Replace(".", "_") + "_" + PropertyName;
+    private string PropertyName => MemberInfo.Name;
+    private string? PropertyValue => Property.Compile().Invoke(Model)?.ToString();
+}

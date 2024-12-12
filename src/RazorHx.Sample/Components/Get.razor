@@ -1,7 +1,46 @@
-﻿@inherits RazorHx.Components.HxComponent
+﻿@using RazorHx.Components
+@inherits RazorHx.Components.HxComponent
+@layout SecondLayout
 
-<p>Got from RazorHx at @DateTime.Now.ToLongTimeString()</p>
+<form>
+    <HxInput TModel="SampleModel"
+             TProperty="string?"
+             Id="@nameof(SampleModel.Email)"
+             Model="@Model"
+             Property="@(m => m.Email)"/>
 
-@code {
+    <img id="@nameof(SampleModel.Email)-indicator" class="htmx-indicator"
+         src="https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/abfa05c49acf005b8b1e0ef8eb25a67a7057eb20/svg-smil/90-ring.svg"
+         alt="spinner"/>
 
-}
+    <HxInput TModel="SampleModel"
+             TProperty="string?"
+             Id="@nameof(SampleModel.Name)"
+             Model="@Model"
+             Property="@(m => m.Name)"
+             type="date"/>
+
+    <img id="@nameof(SampleModel.Name)-indicator" class="htmx-indicator"
+         src="https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/abfa05c49acf005b8b1e0ef8eb25a67a7057eb20/svg-smil/90-ring.svg"
+         alt="spinner"/>
+
+    <HxInput TModel="SampleModel"
+             TProperty="string?"
+             Id="@nameof(SampleModel.Password)"
+             Model="@Model"
+             Property="@(m => m.Password)"/>
+
+    <img id="@nameof(SampleModel.Password)-indicator" class="htmx-indicator"
+         src="https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/abfa05c49acf005b8b1e0ef8eb25a67a7057eb20/svg-smil/90-ring.svg"
+         alt="spinner"/>
+
+    <HxInput TModel="SampleModel"
+             TProperty="int?"
+             Id="@nameof(SampleModel.Age)"
+             Model="@Model"
+             Property="@(m => m.Age)"/>
+
+    <img id="@nameof(SampleModel.Age)-indicator" class="htmx-indicator"
+         src="https://raw.githubusercontent.com/n3r4zzurr0/svg-spinners/abfa05c49acf005b8b1e0ef8eb25a67a7057eb20/svg-smil/90-ring.svg"
+         alt="spinner"/>
+</form>
