@@ -1,12 +1,13 @@
 using RazorHx.Builder;
 using RazorHx.DependencyInjection;
 using RazorHx.Results;
+using RazorHx.Sample;
 using RazorHx.Sample.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorHxComponents(options => {
-    options.RootComponent = typeof(Index);
+    options.RootComponent = typeof(MainLayout);
 });
 
 var app = builder.Build();

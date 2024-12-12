@@ -64,6 +64,10 @@ Our development roadmap outlines the upcoming features and improvements planned 
 - **Status:** Planned
 - **Target Release:** v1.0
 
+## Changelog
+
+For a detailed changelog, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
+
 ## Contributing
 
 We welcome contributions and feedback on these planned features. If you have specific features you'd like to see or would like to contribute to the development, please check our [contribution guidelines](CONTRIBUTING.md)
