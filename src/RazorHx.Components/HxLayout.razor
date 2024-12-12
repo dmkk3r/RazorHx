@@ -3,7 +3,7 @@
 </LayoutView>
 
 @code {
-    [Parameter, EditorRequired] public Type? Layout { get; set; }
+    [Parameter][EditorRequired] public Type? Layout { get; set; }
     [Parameter] public Type? ComponentType { get; set; }
     [Parameter] public Dictionary<string, object?> Parameters { get; set; } = new();
 }

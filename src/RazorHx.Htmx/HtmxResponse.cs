@@ -2,72 +2,79 @@
 
 namespace RazorHx.Htmx;
 
-public class HtmxResponse(HttpResponse response) {
+public class HtmxResponse(HttpResponse response)
+{
+    private readonly IHeaderDictionary _headers;
     private HttpResponse HttpResponse { get; } = response;
 
-    public string? Location
+    public HtmxResponse Location(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Location];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Location] = value;
+        _headers[HtmxResponseHeaderKeys.Location] = value;
+        return this;
     }
 
-    public string? PushUrl
+    public HtmxResponse PushUrl(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.PushUrl];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.PushUrl] = value;
+        _headers[HtmxResponseHeaderKeys.PushUrl] = value;
+        return this;
     }
 
-    public string? Redirect
+    public HtmxResponse Redirect(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Redirect];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Redirect] = value;
+        _headers[HtmxResponseHeaderKeys.Redirect] = value;
+        return this;
     }
 
-    public string? RefreshUrl
+    public HtmxResponse Refresh()
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Refresh];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Refresh] = value;
+        _headers[HtmxResponseHeaderKeys.Refresh] = true.ToString();
+        return this;
     }
 
-    public string? ReplaceUrl
+    public HtmxResponse ReplaceUrl(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.ReplaceUrl];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.ReplaceUrl] = value;
+        _headers[HtmxResponseHeaderKeys.ReplaceUrl] = value;
+        return this;
     }
 
-    public string? Reswap
+    public HtmxResponse Reswap(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Reswap];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Reswap] = value;
+        _headers[HtmxResponseHeaderKeys.Reswap] = value;
+        return this;
     }
 
-    public string? Retarget
+    public HtmxResponse Retarget(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Retarget];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Retarget] = value;
+        _headers[HtmxResponseHeaderKeys.Retarget] = value;
+        return this;
     }
 
-    public string? Reselect
+    public HtmxResponse Reselect(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Reselect];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Reselect] = value;
+        _headers[HtmxResponseHeaderKeys.Reselect] = value;
+        return this;
     }
 
-    public string? Trigger
+    public HtmxResponse Trigger(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.Trigger];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.Trigger] = value;
+        _headers[HtmxResponseHeaderKeys.Trigger] = value;
+        return this;
     }
 
-    public string? TriggerAfterSettle
+    public HtmxResponse TriggerAfterSettle(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.TriggerAfterSettle];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.TriggerAfterSettle] = value;
+        _headers[HtmxResponseHeaderKeys.TriggerAfterSettle] = value;
+        return this;
     }
 
-    public string? TriggerAfterSwap
+    public HtmxResponse TriggerAfterSwap(string? value)
     {
-        get => HttpResponse.Headers[HtmxResponseHeaderKeys.TriggerAfterSwap];
-        set => HttpResponse.Headers[HtmxResponseHeaderKeys.TriggerAfterSwap] = value;
+        _headers[HtmxResponseHeaderKeys.TriggerAfterSwap] = value;
+        return this;
+    }
+
+    public void WriteHeaders()
+    {
+        foreach (var (key, value) in _headers) HttpResponse.Headers[key] = value;
     }
 }

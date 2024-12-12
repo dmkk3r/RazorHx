@@ -1,5 +1,5 @@
 ﻿namespace RazorHx.DependencyInjection;
 
-public class RazorHxMarkerService {
-    
+public class RazorHxMarkerService
+{
 }

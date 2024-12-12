@@ -2,6 +2,7 @@
 
 namespace RazorHx.DependencyInjection;
 
-public interface IRazorHxBuilder {
+public interface IRazorHxBuilder
+{
     public IServiceCollection Services { get; }
 }
