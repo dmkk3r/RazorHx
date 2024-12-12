@@ -2,7 +2,6 @@ using RazorHx.Builder;
 using RazorHx.DependencyInjection;
 using RazorHx.Results;
 using RazorHx.Sample.Components;
-using Index = RazorHx.Sample.Index;
 
 var builder = WebApplication.CreateBuilder(args);
 
