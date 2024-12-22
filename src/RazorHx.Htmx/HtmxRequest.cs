@@ -6,7 +6,7 @@ public class HtmxRequest(HttpRequest request)
 {
     private HttpRequest HttpRequest { get; } = request;
 
-    public bool Boosted => HttpRequest.Headers[HtmxRequestHeaderKeys.Request] == "true";
+    public bool Boosted => HttpRequest.Headers[HtmxRequestHeaderKeys.Boosted] == "true";
     public string? CurrentUrl => HttpRequest.Headers[HtmxRequestHeaderKeys.CurrentUrl];
     public bool HistoryRestoreRequest => HttpRequest.Headers[HtmxRequestHeaderKeys.HistoryRestoreRequest] == "true";
     public string? Prompt => HttpRequest.Headers[HtmxRequestHeaderKeys.Prompt];

@@ -41,7 +41,7 @@ internal static class RazorHxResultExecutor
 
         string htmlContent;
 
-        if (htmxRequestFeature.CurrentRequest.Request && !htmxRequestFeature.CurrentRequest.Boosted)
+        if (htmxRequestFeature.CurrentRequest is { Request: true, Boosted: false })
         {
             htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
             {
