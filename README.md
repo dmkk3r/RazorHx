@@ -30,39 +30,17 @@ Here's a quick example of how to use the library:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorHxComponents(options => {
-    options.RootComponent = typeof(Index);
+    options.RootComponent = typeof(RootLayout);
 });
 
 var app = builder.Build();
 
 app.UseRazorHxComponents();
 
-app.MapGet("/", () => new RazorHxComponentResult<Hello>());
+app.MapGet("/", () => new RazorHxResult<Hello>());
 
 app.Run();
 ```
-
-## Roadmap
-
-Our development roadmap outlines the upcoming features and improvements planned for the RazorHx for ASP.NET Core.
-
-### 1. Partial HTML Result based on HTMX Requests
-
-- **Description:** Implement the ability to return partial HTML results based on specific htmx requests, enabling more granular updates to the user interface.
-- **Status:** In Progress
-- **Target Release:** v1.0
-
-### 2. Layout Support
-
-- **Description:** Enhance the library to provide improved support for layouts, allowing for more versatile and dynamic page structures.
-- **Status:** In Progress
-- **Target Release:** v1.0
-
-### 3. Form Handling
-
-- **Description:** Integrate robust form handling capabilities, making it easier to work with forms and dynamic form submissions.
-- **Status:** Planned
-- **Target Release:** v1.0
 
 ## Changelog
 
