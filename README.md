@@ -42,6 +42,31 @@ app.MapGet("/", () => new RazorHxResult<Hello>());
 app.Run();
 ```
 
+### "Out of Band" Components
+
+Create an endpoint which returns a RazorHxResult and append the WithOutOfBand extension to specify your oob component:
+```csharp
+app.MapGet("/", () => new RazorHxResult<Hello>()
+    .WithOutOfBand<World>());
+```
+
+Define a slot in the DOM where the response will be swapped to: 
+```html
+<!-- Hello.razor or somewhere in Layouts -->
+<div id="oob">
+    ...
+</div>
+```
+
+Lastly create a component which holds the content to swap in:
+
+```html
+<!-- World.razor -->
+<div id="oob" hx-swap-oob="true">
+    ...
+</div>
+```
+
 ## Changelog
 
 For a detailed changelog, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
