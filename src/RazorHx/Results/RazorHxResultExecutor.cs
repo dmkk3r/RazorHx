@@ -25,52 +25,59 @@ internal static class RazorHxResultExecutor
         return RenderComponentToResponse(
             httpContext,
             result.ComponentType,
-            result.Parameters);
+            result.Parameters,
+            result.OobComponentType,
+            result.OobParameters);
     }
 
-    private static async Task<Task> RenderComponentToResponse(HttpContext httpContext, Type componentType,
-        ParameterView componentParameters)
+    private static async Task<Task> RenderComponentToResponse(
+        HttpContext httpContext,
+        Type componentType,
+        ParameterView componentParameters,
+        Type? oobComponentType,
+        ParameterView oobComponentParameters)
     {
         var htmlRenderer = httpContext.RequestServices.GetRequiredService<HtmlRenderer>();
         var razorHxComponentsServiceOptions = httpContext.RequestServices.GetRequiredService<RazorHxServiceOptions>();
-
         var htmxRequestFeature = httpContext.Features.Get<IHtmxRequestFeature>();
 
         if (htmxRequestFeature == null)
             throw new InvalidOperationException("HtmxRequestFeature is null");
 
         string htmlContent;
+        Type layout;
 
         if (htmxRequestFeature.CurrentRequest is { Request: true, Boosted: false })
         {
-            htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
-            {
-                var output = await htmlRenderer.RenderComponentAsync(componentType, componentParameters);
-                return output.ToHtmlString();
-            });
+            layout = typeof(EmptyLayout);
         }
         else
         {
             var useComponentLayout = componentType.GetCustomAttribute<LayoutAttribute>() != null;
-            var layout = useComponentLayout
+            layout = useComponentLayout
                 ? componentType.GetCustomAttribute<LayoutAttribute>()!.LayoutType
                 : razorHxComponentsServiceOptions.RootComponent;
-
-            var parameters = new Dictionary<string, object?>
-            {
-                { "Layout", layout },
-                { "ComponentType", componentType },
-                { "Parameters", (Dictionary<string, object?>)componentParameters.ToDictionary() }
-            };
-
-            htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
-            {
-                var output =
-                    await htmlRenderer.RenderComponentAsync(typeof(HxLayout), ParameterView.FromDictionary(parameters));
-                return output.ToHtmlString();
-            });
         }
 
+        var parameters = new Dictionary<string, object?>
+        {
+            { "Layout", layout },
+            { "ComponentType", componentType },
+            { "Parameters", (Dictionary<string, object?>)componentParameters.ToDictionary() }
+        };
+
+        if (oobComponentType != null)
+        {
+            parameters.Add("OobComponentType", oobComponentType);
+            parameters.Add("OobParameters", (Dictionary<string, object?>)oobComponentParameters.ToDictionary());
+        }
+
+        htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
+        {
+            var output =
+                await htmlRenderer.RenderComponentAsync(typeof(HxLayout), ParameterView.FromDictionary(parameters));
+            return output.ToHtmlString();
+        });
 
         return httpContext.Response.WriteAsync(htmlContent);
     }

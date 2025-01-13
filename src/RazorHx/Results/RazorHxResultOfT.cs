@@ -16,4 +16,18 @@ public class RazorHxResult<T> : RazorHxResult where T : IComponent
         base(typeof(T), parameters)
     {
     }
+
+    public RazorHxResult<T> WithOutOfBand<TComponent>() where TComponent : IComponent
+    {
+        OobComponentType = typeof(TComponent);
+        OobParameters = EmptyParameters;
+        return this;
+    }
+
+    public RazorHxResult<T> WithOutOfBand<TComponent>(object parameters) where TComponent : IComponent
+    {
+        OobComponentType = typeof(TComponent);
+        OobParameters = CoerceParametersObjectToDictionary(parameters);
+        return this;
+    }
 }

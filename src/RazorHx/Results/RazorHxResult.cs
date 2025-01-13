@@ -5,13 +5,14 @@ namespace RazorHx.Results;
 
 public class RazorHxResult : IResult, IStatusCodeHttpResult, IContentTypeHttpResult
 {
-    private static readonly ParameterView EmptyParameters = ParameterView.Empty;
+    internal static readonly ParameterView EmptyParameters = ParameterView.Empty;
 
-    public RazorHxResult(Type componentType) : this(componentType, EmptyParameters)
+    protected RazorHxResult(Type componentType)
+        : this(componentType, EmptyParameters)
     {
     }
 
-    public RazorHxResult(Type componentType, object parameters)
+    protected RazorHxResult(Type componentType, object parameters)
         : this(componentType, CoerceParametersObjectToDictionary(parameters))
     {
     }
@@ -24,20 +25,19 @@ public class RazorHxResult : IResult, IStatusCodeHttpResult, IContentTypeHttpRes
         Parameters = parameters;
     }
 
-    public Type ComponentType { get; }
-
-    public ParameterView Parameters { get; }
-
     public string? ContentType { get; set; }
+    public int? StatusCode { get; set; }
+    public Type ComponentType { get; }
+    public Type? OobComponentType { get; protected set; }
+    public ParameterView Parameters { get; }
+    public ParameterView OobParameters { get; protected set; }
 
     public Task ExecuteAsync(HttpContext httpContext)
     {
         return RazorHxResultExecutor.ExecuteAsync(httpContext, this);
     }
 
-    public int? StatusCode { get; set; }
-
-    private static ParameterView CoerceParametersObjectToDictionary(object? parameters)
+    internal static ParameterView CoerceParametersObjectToDictionary(object? parameters)
     {
         return parameters is null
             ? throw new ArgumentNullException(nameof(parameters))

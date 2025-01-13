@@ -1,7 +1,13 @@
 ﻿@inherits RazorHx.Components.HxComponent
+@inject ILogger<Hello> Logger
 
 <h3>World</h3>
 
 @code {
+
+    protected override void OnParametersSet()
+    {
+        Logger.LogInformation("HelloWorld");
+    }
 
 }

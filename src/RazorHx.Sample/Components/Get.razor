@@ -1,7 +1,13 @@
 ﻿@inherits RazorHx.Components.HxComponent
+@inject ILogger<Hello> Logger
 
 <p>Got from RazorHx at @DateTime.Now.ToLongTimeString()</p>
 
 @code {
+
+    protected override void OnParametersSet()
+    {
+        Logger.LogInformation("Get");
+    }
 
 }
