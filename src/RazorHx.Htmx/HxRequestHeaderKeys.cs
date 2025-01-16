@@ -1,6 +1,6 @@
 ﻿namespace RazorHx.Htmx;
 
-public static class HtmxRequestHeaderKeys
+public static class HxRequestHeaderKeys
 {
     /// <summary>
     ///     Indicates that the request is via an element using hx-boost.

@@ -1,6 +1,6 @@
 ﻿namespace RazorHx.Htmx;
 
-public static class HtmxResponseHeaderKeys
+public static class HxResponseHeaderKeys
 {
     /// <summary>
     ///     Allows you to do a client-side redirect that does not do a full page reload.

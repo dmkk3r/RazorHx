@@ -2,5 +2,5 @@
 
 public interface IHtmxRequestFeature
 {
-    HtmxRequest CurrentRequest { get; set; }
+    HxRequest CurrentRequest { get; set; }
 }

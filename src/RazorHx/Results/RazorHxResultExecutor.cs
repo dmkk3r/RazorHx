@@ -44,7 +44,6 @@ internal static class RazorHxResultExecutor
         if (htmxRequestFeature == null)
             throw new InvalidOperationException("HtmxRequestFeature is null");
 
-        string htmlContent;
         Type layout;
 
         if (htmxRequestFeature.CurrentRequest is { Request: true, Boosted: false })
@@ -72,7 +71,7 @@ internal static class RazorHxResultExecutor
             parameters.Add("OobParameters", (Dictionary<string, object?>)oobComponentParameters.ToDictionary());
         }
 
-        htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
+        var htmlContent = await htmlRenderer.Dispatcher.InvokeAsync(async () =>
         {
             var output =
                 await htmlRenderer.RenderComponentAsync(typeof(HxLayout), ParameterView.FromDictionary(parameters));

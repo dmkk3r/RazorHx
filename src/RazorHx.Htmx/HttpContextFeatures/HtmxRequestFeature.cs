@@ -2,12 +2,7 @@
 
 namespace RazorHx.Htmx.HttpContextFeatures;
 
-public class HtmxRequestFeature : IHtmxRequestFeature
+public class HtmxRequestFeature(HttpRequest request) : IHtmxRequestFeature
 {
-    public HtmxRequestFeature(HttpRequest request)
-    {
-        CurrentRequest = new HtmxRequest(request);
-    }
-
-    public HtmxRequest CurrentRequest { get; set; }
+    public HxRequest CurrentRequest { get; set; } = new(request);
 }
