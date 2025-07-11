@@ -2,7 +2,9 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This small helper library seamlessly combines HTMX with the latest Razor Components in the ASP.NET Core world. With this library, you can effortlessly return HTML through Minimal API endpoints, which is then rendered by Razor Components. Streamline development by harnessing the power of HTMX alongside the flexibility of Razor Components and Minimal APIs.
+This small helper library seamlessly combines HTMX with the latest Razor Components in the ASP.NET Core world. With this
+library, you can effortlessly return HTML through Minimal API endpoints, which is then rendered by Razor Components.
+Streamline development by harnessing the power of HTMX alongside the flexibility of Razor Components and Minimal APIs.
 
 ## Features
 
@@ -12,12 +14,15 @@ This small helper library seamlessly combines HTMX with the latest Razor Compone
 
 ## Installation
 
-To use RazorHx in your ASP.NET Core project, you only need to install the NuGet package. Open your project in the Package Manager Console and run the following command:
+To use RazorHx in your ASP.NET Core project, you only need to install the NuGet package. Open your project in the
+Package Manager Console and run the following command:
+
 ```bash
 Install-Package RazorHx
 ```
 
 Alternatively, you can use the .NET CLI with the following command:
+
 ```bash
 dotnet add package RazorHx
 ```
@@ -42,15 +47,46 @@ app.MapGet("/", () => new RazorHxResult<Hello>());
 app.Run();
 ```
 
-### "Out of Band" Components
+### Triggers
+
+[Read more at the official documentation site.](https://htmx.org/docs/#triggers)
+
+Create an endpoint which returns a RazorHxResult and append the WithTrigger extension to specify the event to trigger:
+
+```csharp
+app.MapGet("/", () => new RazorHxResult<Hello>()
+    .WithTrigger("event"));
+```
+
+Specify the timing, when the event should trigger:
+
+```csharp
+app.MapGet("/", () => new RazorHxResult<Hello>()
+    .WithTrigger("event", timing: TriggerTiming.Default)
+    .WithTrigger("event", timing: TriggerTiming.AfterSettle)
+    .WithTrigger("event", timing: TriggerTiming.AfterSwap));
+```
+
+Specify the condition, when the event should be included:
+
+```csharp
+app.MapGet("/", () => new RazorHxResult<Hello>()
+    .WithTrigger("event", include: false));
+```
+
+### Out of Band Swaps
+
+[Read more at the official documentation site.](https://htmx.org/docs/#oob_swaps)
 
 Create an endpoint which returns a RazorHxResult and append the WithOutOfBand extension to specify your oob component:
+
 ```csharp
 app.MapGet("/", () => new RazorHxResult<Hello>()
     .WithOutOfBand<World>());
 ```
 
-Define a slot in the DOM where the response will be swapped to: 
+Define a slot in the DOM where the response will be swapped to:
+
 ```html
 <!-- Hello.razor or somewhere in Layouts -->
 <div id="oob">
@@ -73,7 +109,8 @@ For a detailed changelog, please refer to the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## Contributing
 
-We welcome contributions and feedback on these planned features. If you have specific features you'd like to see or would like to contribute to the development, please check our [contribution guidelines](CONTRIBUTING.md)
+We welcome contributions and feedback on these planned features. If you have specific features you'd like to see or
+would like to contribute to the development, please check our [contribution guidelines](CONTRIBUTING.md)
 
 ## License
 

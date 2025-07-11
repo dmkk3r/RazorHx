@@ -4,7 +4,6 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Version>0.0.2</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>RazorHx</Title>
         <Authors>dmkk3r</Authors>
@@ -20,6 +19,10 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.11" />
+        <PackageReference Include="Nerdbank.GitVersioning" Version="3.7.115">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
 </Project>

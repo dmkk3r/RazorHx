@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
+using RazorHx.Extensions;
+using RazorHx.Htmx;
 
 namespace RazorHx.Results;
 
 public class RazorHxResult : IResult, IStatusCodeHttpResult, IContentTypeHttpResult
 {
-    internal static readonly ParameterView EmptyParameters = ParameterView.Empty;
-
     protected RazorHxResult(Type componentType)
-        : this(componentType, EmptyParameters)
+        : this(componentType, ParameterView.Empty)
     {
     }
 
@@ -28,13 +28,14 @@ public class RazorHxResult : IResult, IStatusCodeHttpResult, IContentTypeHttpRes
     public string? ContentType { get; set; }
     public int? StatusCode { get; set; }
     public Type ComponentType { get; }
-    public Type? OobComponentType { get; protected set; }
+    public Type? OobComponentType { get; set; }
     public ParameterView Parameters { get; }
-    public ParameterView OobParameters { get; protected set; }
+    public ParameterView OobParameters { get; set; }
+    public List<HtmxTrigger> Triggers { get; } = [];
 
-    public Task ExecuteAsync(HttpContext httpContext)
+    public async Task ExecuteAsync(HttpContext httpContext)
     {
-        return RazorHxResultExecutor.ExecuteAsync(httpContext, this);
+        await RazorHxResultExecutor.ExecuteAsync(httpContext, this);
     }
 
     internal static ParameterView CoerceParametersObjectToDictionary(object? parameters)
