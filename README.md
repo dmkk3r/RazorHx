@@ -103,6 +103,31 @@ Lastly create a component which holds the content to swap in:
 </div>
 ```
 
+### Server Sent Events
+
+[Read more at the official documentation site.](https://htmx.org/extensions/sse/)
+
+Create an endpoint which returns a RazorHxResult and provide an IAsyncEnumerable:
+
+```csharp
+var channel = Channel.CreateUnbounded<int>();
+
+app.MapGet("/sse", () => new RazorHxResult<Sse, int>(channel.Reader.ReadAllAsync()) );
+```
+
+The generic parameters on this result specify the type of component and parameter which will be updated each iteration.
+Mark the parameter with the StreamParameter attribute:
+
+```csharp
+@using RazorHx.Results
+
+<p>Count: @Count</p>
+
+@code {
+    [Parameter] [StreamParameter] public int Count { get; set; }
+}
+```
+
 ## Changelog
 
 For a detailed changelog, please refer to the [CHANGELOG.md](CHANGELOG.md) file.

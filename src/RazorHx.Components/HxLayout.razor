@@ -1,15 +1,17 @@
 ﻿<LayoutView Layout="Layout">
     <DynamicComponent Type="ComponentType" Parameters="Parameters"/>
-    @if (OobComponentType != null)
+
+    @foreach (var outOfBandComponent in OutOfBandComponents)
     {
-        <DynamicComponent Type="OobComponentType" Parameters="OobParameters"/>
+        <DynamicComponent
+            Type="outOfBandComponent.Item1"
+            Parameters="outOfBandComponent.Item2"/>
     }
 </LayoutView>
 
 @code {
     [Parameter] [EditorRequired] public Type? Layout { get; set; }
     [Parameter] public Type? ComponentType { get; set; }
-    [Parameter] public Dictionary<string, object?> Parameters { get; set; } = new();
-    [Parameter] public Type? OobComponentType { get; set; }
-    [Parameter] public Dictionary<string, object?> OobParameters { get; set; } = new();
+    [Parameter] public Dictionary<string, object?> Parameters { get; set; }
+    [Parameter] public List<(Type, Dictionary<string, object?>)> OutOfBandComponents { get; set; } = [];
 }
