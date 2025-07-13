@@ -118,7 +118,7 @@ app.MapGet("/sse", () => new RazorHxResult<Sse, int>(channel.Reader.ReadAllAsync
 The generic parameters on this result specify the type of component and parameter which will be updated each iteration.
 Mark the parameter with the StreamParameter attribute:
 
-```csharp
+```razor
 @using RazorHx.Results
 
 <p>Count: @Count</p>
